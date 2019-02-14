@@ -1,0 +1,32 @@
+# Eclipse
+.classpath
+.factorypath
+.project
+.settings/
+/application.yml
+target/
+logs/
+.metadata
+
+# Intellij
+.idea/
+*.iml
+*.iws
+
+# Mac
+.DS_Store
+
+# Maven
+log/
+target/
+dependency-reduced-pom.xml
+
+# Java
+*.class
+*.jar
+*.war
+*.ear
+
+# Other
+out
+*.log
