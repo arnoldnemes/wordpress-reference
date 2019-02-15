@@ -35,6 +35,8 @@ public class WordPressBlogPostStepDef {
         homePagePageObject.waitForWordpressLogo();
         homePagePageObject.waitForLogInButton();
         homePagePageObject.waitForGetStartedButton();
+        Logger log = Logger.getLogger(WordPressBlogPostStepDef.class);
+        log.info("wordpress is opened");
     }
 
     @Then("^the wordpress logo should be visible$")
@@ -61,7 +63,6 @@ public class WordPressBlogPostStepDef {
         BasePageObject basePageObject = new BasePageObject(driver);
         if (scenario.isFailed()) {
             basePageObject.takeScreenshot();
-            //Log.info(scenario.getName() + " scenario is failed! Screenshot is taken!");
         }
         driver.close();
         driver.quit();
