@@ -1,0 +1,18 @@
+language: java
+dist: trusty
+
+addons:
+  apt:
+    packages:
+      - oracle-java8-installer
+      - google-chrome-stable
+    sources:
+      - google-chrome
+
+matrix:
+  allow_failures:
+    - java: 5
+
+before_script: mvn install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+script: xvfb-run  --server-args="-screen 0 1280x1024x16" mvn clean test
