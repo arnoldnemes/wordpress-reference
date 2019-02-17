@@ -20,15 +20,28 @@ public class BasePageObject {
         PageFactory.initElements(driver, this);
     }
 
+    /**
+     *
+     * @return
+     */
     private WebDriverWait explicitWait() {
         WebDriverWait wait;
         return wait = new WebDriverWait(driver, 5);
     }
 
+    /**
+     * Wait for web element until it is visible.
+     * @param el
+     * @return a web element
+     */
     public WebElement waitForElement(WebElement el) {
         return explicitWait().until(ExpectedConditions.visibilityOf(el));
     }
 
+    /**
+     * Create a .png screenshot to src/test/resources folder.
+     * @throws IOException
+     */
     public void takeScreenshot() throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFileToDirectory(file, new File("src\\test\\resources"));
