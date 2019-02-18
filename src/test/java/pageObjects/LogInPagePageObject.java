@@ -66,9 +66,14 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the Back to WordPress button is visible, false if not.
      */
     public boolean backToWordPressButtonIsVisible() {
+        backToWordPressButton = waitForElement(backToWordPressButton);
         return backToWordPressButton.isDisplayed();
     }
 
+    /**
+     * Check the Email Adress or Username field is visible.
+     * @return true is the Email Adress or Username field is visible, false if not.
+     */
     public boolean emailOrUsernameInputFieldIsVisible() {
         return emailOrUsernameInputField.isDisplayed();
     }
