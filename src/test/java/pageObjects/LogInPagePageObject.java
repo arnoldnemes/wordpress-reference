@@ -28,6 +28,12 @@ public class LogInPagePageObject extends BasePageObject {
     @FindBy(css = "input[type='text']")
     private WebElement emailOrUsernameInputField;
 
+    @FindBy(css = "#password")
+    private WebElement passwordInputField;
+
+    @FindBy(css = ".button.form-button.is-primary")
+    private WebElement logInButtonOnLogInPage;
+
     /**
      * Click the Log In button.
      */
@@ -70,5 +76,57 @@ public class LogInPagePageObject extends BasePageObject {
     public boolean backToWordPressButtonIsVisible() {
         backToWordPressButton = waitForElement(backToWordPressButton);
         return backToWordPressButton.isDisplayed();
+    }
+
+    /**
+     * Check the Email or Username input field is visible.
+     *
+     * @return ture is the Email or Username input field is visible, false if not.
+     */
+    public boolean emailOrUsernameInputFieldIsVisible() {
+        emailOrUsernameInputField = waitForElement(emailOrUsernameInputField);
+        return emailOrUsernameInputField.isDisplayed();
+    }
+
+    /**
+     * Write the text what the function get from the parameter.
+     *
+     * @param
+     */
+    public void writeTextToEmailOrUsernameInputField(String s) {
+        emailOrUsernameInputField.sendKeys(s);
+    }
+
+    /**
+     * Click the Continue button on the Log In page.
+     */
+    public void clickOnContinueButton() {
+        continueButton.click();
+    }
+
+    /**
+     * Wait for the Password field web element.
+     *
+     * @return true if the Password field is visible, false if not.
+     */
+    public boolean passwordInputFieldIsVisible() {
+        passwordInputField = waitForElement(passwordInputField);
+        return passwordInputField.isDisplayed();
+    }
+
+    /**
+     * Write the password what the function get from the parameter.
+     *
+     * @param s
+     */
+    public void writeTextToPasswordInputField(String s) {
+        passwordInputField.sendKeys(s);
+    }
+
+    /**
+     * Click the Log In button on the Log In page.
+     */
+    public void clickLogInButtonOnLogInPage() {
+        logInButtonOnLogInPage.click();
     }
 }

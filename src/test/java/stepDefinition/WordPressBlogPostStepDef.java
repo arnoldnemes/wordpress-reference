@@ -15,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.BasePageObject;
 import pageObjects.HomePagePageObject;
 import pageObjects.LogInPagePageObject;
+import pageObjects.ReaderPagePageObject;
 
 import java.io.IOException;
 
@@ -87,6 +88,47 @@ public class WordPressBlogPostStepDef {
     public void the_continue_with_google_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         Assert.assertTrue(logInPagePageObject.continueWithGoogleButtonIsVisible());
+    }
+
+    //3.
+
+    @And("^the (.*) email address is typed into the email input field$")
+    public void the_email_address_is_typed_into_the_email_input_field(String emailOrUsername) {
+        LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        Assert.assertTrue(logInPagePageObject.emailOrUsernameInputFieldIsVisible());
+        logInPagePageObject.writeTextToEmailOrUsernameInputField(emailOrUsername);
+    }
+
+    @And("^the continue button is clicked$")
+    public void the_continue_button_is_clicked() {
+        LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        logInPagePageObject.clickOnContinueButton();
+    }
+
+    @Then("^the password input field should be visible$")
+    public void the_password_input_field_should_be_visible() {
+        LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        Assert.assertTrue(logInPagePageObject.passwordInputFieldIsVisible());
+    }
+
+    @When("^the (.*) password is typed into the password input field$")
+    public void the_password_is_typed_into_the_password_input_field(String password) {
+        LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        logInPagePageObject.writeTextToPasswordInputField(password);
+    }
+
+    @And("^the Log In button is clicked on the Log In page$")
+    public void the_Log_in_button_is_clicked_on_the_Log_in_page() {
+        LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        logInPagePageObject.clickLogInButtonOnLogInPage();
+    }
+
+    @Then("^the Reader page should be visible$")
+    public void the_Reader_page_should_be_visible() {
+        ReaderPagePageObject readerPagePageObject = new ReaderPagePageObject(driver);
+        Assert.assertTrue(readerPagePageObject.welcomeToReaderImageIsVisible());
+        Assert.assertTrue(readerPagePageObject.readerButtonClassIsActive());
+        Assert.assertTrue(readerPagePageObject.searchBarIsVisible());
     }
 
     @After
