@@ -25,6 +25,9 @@ public class LogInPagePageObject extends BasePageObject {
     @FindBy(css = ".logged-out-form__back-link")
     private WebElement backToWordPressButton;
 
+    @FindBy(css = "input[type='text']")
+    private WebElement emailOrUsernameInputField;
+
     /**
      * Click the Log In button.
      */
@@ -64,5 +67,9 @@ public class LogInPagePageObject extends BasePageObject {
      */
     public boolean backToWordPressButtonIsVisible() {
         return backToWordPressButton.isDisplayed();
+    }
+
+    public boolean emailOrUsernameInputFieldIsVisible() {
+        return emailOrUsernameInputField.isDisplayed();
     }
 }

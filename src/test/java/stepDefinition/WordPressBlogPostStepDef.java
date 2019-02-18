@@ -68,8 +68,9 @@ public class WordPressBlogPostStepDef {
     }
 
     @Then("^the Back to WordPress button should be visible$")
-    public void the_Back_to_WordPress_button_should_be_visible() {
+    public void the_Back_to_WordPress_button_should_be_visible() throws InterruptedException {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
+        Thread.sleep(2000);
         logInPagePageObject.backToWordPressButtonIsVisible();
     }
 
