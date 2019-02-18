@@ -21,7 +21,6 @@ public class BasePageObject {
     }
 
     /**
-     *
      * @return
      */
     private WebDriverWait explicitWait() {
@@ -31,6 +30,7 @@ public class BasePageObject {
 
     /**
      * Wait for web element until it is visible.
+     *
      * @param el
      * @return a web element
      */
@@ -40,6 +40,7 @@ public class BasePageObject {
 
     /**
      * Create a .png screenshot to src/test/resources folder.
+     *
      * @throws IOException
      */
     public void takeScreenshot() throws IOException {

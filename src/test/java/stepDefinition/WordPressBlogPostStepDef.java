@@ -16,8 +16,6 @@ import pageObjects.BasePageObject;
 import pageObjects.HomePagePageObject;
 import pageObjects.LogInPagePageObject;
 
-import static org.hamcrest.Matchers.*;
-
 import java.io.IOException;
 
 public class WordPressBlogPostStepDef {
@@ -70,7 +68,7 @@ public class WordPressBlogPostStepDef {
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        logInPagePageObject.backToWordPressButtonIsVisible();
+        Assert.assertTrue(logInPagePageObject.backToWordPressButtonIsVisible());
     }
 
     @And("^the continue button should be visible$")

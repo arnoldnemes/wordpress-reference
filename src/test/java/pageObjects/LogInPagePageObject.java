@@ -41,11 +41,12 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the Continue button is visible, false if not.
      */
     public boolean continueButtonIsVisible() {
+        continueButton = waitForElement(continueButton);
         return continueButton.isDisplayed();
     }
 
     /**
-     * @return the element's text.
+     * @return the given element's text.
      */
     public String logInToYourAccountText() {
         return logInToYourAccountText.getText();
@@ -57,6 +58,7 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the ContinueWithGoogle button is visible, false if not.
      */
     public boolean continueWithGoogleButtonIsVisible() {
+        continueWithGoogleButton = waitForElement(continueWithGoogleButton);
         return continueWithGoogleButton.isDisplayed();
     }
 
@@ -68,13 +70,5 @@ public class LogInPagePageObject extends BasePageObject {
     public boolean backToWordPressButtonIsVisible() {
         backToWordPressButton = waitForElement(backToWordPressButton);
         return backToWordPressButton.isDisplayed();
-    }
-
-    /**
-     * Check the Email Adress or Username field is visible.
-     * @return true is the Email Adress or Username field is visible, false if not.
-     */
-    public boolean emailOrUsernameInputFieldIsVisible() {
-        return emailOrUsernameInputField.isDisplayed();
     }
 }
