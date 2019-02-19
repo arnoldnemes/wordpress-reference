@@ -9,7 +9,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.BasePageObject;
@@ -17,7 +16,11 @@ import pageObjects.HomePagePageObject;
 import pageObjects.LogInPagePageObject;
 import pageObjects.ReaderPagePageObject;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
+
 import java.io.IOException;
+import java.util.Arrays;
 
 public class WordPressBlogPostStepDef {
     private WebDriver driver;
@@ -43,19 +46,19 @@ public class WordPressBlogPostStepDef {
     @Then("^the WordPress logo should be visible$")
     public void the_wordpress_logo_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
-        Assert.assertTrue(homePagePageObject.wordpressLogoIsVisible());
+        assertThat(true, is(equalTo(homePagePageObject.wordpressLogoIsVisible())));
     }
 
     @And("^the Log In button should be visible$")
     public void the_log_in_button_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
-        Assert.assertTrue(homePagePageObject.logInButtonIsVisible());
+        assertThat(true, is(equalTo(homePagePageObject.logInButtonIsVisible())));
     }
 
     @And("^the Get Started button should be visible$")
     public void the_Get_Started_button_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
-        Assert.assertTrue(homePagePageObject.getStartedButtonIsVisible());
+        assertThat(true, is(equalTo(homePagePageObject.getStartedButtonIsVisible())));
     }
 
     //2.
@@ -69,25 +72,25 @@ public class WordPressBlogPostStepDef {
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertTrue(logInPagePageObject.backToWordPressButtonIsVisible());
+        assertThat(true, is(equalTo(logInPagePageObject.backToWordPressButtonIsVisible())));
     }
 
     @And("^the continue button should be visible$")
     public void the_continue_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertTrue(logInPagePageObject.continueButtonIsVisible());
+        assertThat(true, is(equalTo(logInPagePageObject.continueButtonIsVisible())));
     }
 
     @And("^the Log in to your account text should be visible$")
     public void the_Log_in_to_your_account_text_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertEquals("Log in to your account.", logInPagePageObject.logInToYourAccountText());
+        assertThat("Log in to your account.", is(equalTo(logInPagePageObject.logInToYourAccountText())));
     }
 
     @And("^the continue with google button should be visible$")
     public void the_continue_with_google_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertTrue(logInPagePageObject.continueWithGoogleButtonIsVisible());
+        assertThat(true, is(equalTo(logInPagePageObject.continueWithGoogleButtonIsVisible())));
     }
 
     //3.
@@ -95,7 +98,7 @@ public class WordPressBlogPostStepDef {
     @And("^the (.*) email address is typed into the email input field$")
     public void the_email_address_is_typed_into_the_email_input_field(String emailOrUsername) {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertTrue(logInPagePageObject.emailOrUsernameInputFieldIsVisible());
+        assertThat(true, is(equalTo(logInPagePageObject.emailOrUsernameInputFieldIsVisible())));
         logInPagePageObject.writeTextToEmailOrUsernameInputField(emailOrUsername);
     }
 
@@ -108,7 +111,7 @@ public class WordPressBlogPostStepDef {
     @Then("^the password input field should be visible$")
     public void the_password_input_field_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
-        Assert.assertTrue(logInPagePageObject.passwordInputFieldIsVisible());
+        assertThat(true, is(equalTo(logInPagePageObject.passwordInputFieldIsVisible())));
     }
 
     @When("^the (.*) password is typed into the password input field$")
@@ -126,9 +129,9 @@ public class WordPressBlogPostStepDef {
     @Then("^the Reader page should be visible$")
     public void the_Reader_page_should_be_visible() {
         ReaderPagePageObject readerPagePageObject = new ReaderPagePageObject(driver);
-        Assert.assertTrue(readerPagePageObject.welcomeToReaderImageIsVisible());
-        Assert.assertTrue(readerPagePageObject.readerButtonClassIsActive());
-        Assert.assertTrue(readerPagePageObject.searchBarIsVisible());
+        assertThat(true, is(equalTo(readerPagePageObject.welcomeToReaderImageIsVisible())));
+        assertThat(readerPagePageObject.readerButtonGetClass(), stringContainsInOrder(Arrays.asList("is", "active")));
+        assertThat(true, is(equalTo(readerPagePageObject.searchBarIsVisible())));
     }
 
     @After

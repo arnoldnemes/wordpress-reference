@@ -30,16 +30,11 @@ public class ReaderPagePageObject extends BasePageObject {
     }
 
     /**
-     * Check the Reader button's class contains the "is-active" string.
-     *
-     * @return true if the Reader button is active, false if not.
+     * @return the reader button class name in String.
      */
-    public boolean readerButtonClassIsActive() {
+    public String readerButtonGetClass() {
         String className = readerButton.getAttribute("class");
-        if (className.contains("is-active")) {
-            return true;
-        }
-        return false;
+        return className;
     }
 
     public boolean searchBarIsVisible() {
