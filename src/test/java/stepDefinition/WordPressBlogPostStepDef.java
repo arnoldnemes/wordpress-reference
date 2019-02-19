@@ -111,30 +111,35 @@ public class WordPressBlogPostStepDef {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat(true, is(equalTo(logInPagePageObject.emailOrUsernameInputFieldIsVisible())));
         logInPagePageObject.writeTextToEmailOrUsernameInputField(emailOrUsername);
+        log.info("the " + emailOrUsername + " email adress is typed into the email input field");
     }
 
     @And("^the continue button is clicked$")
     public void the_continue_button_is_clicked() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         logInPagePageObject.clickOnContinueButton();
+        log.info("the continue button is clicked");
     }
 
     @Then("^the password input field should be visible$")
     public void the_password_input_field_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat(true, is(equalTo(logInPagePageObject.passwordInputFieldIsVisible())));
+        log.info("the password input field should be visible");
     }
 
     @When("^the (.*) password is typed into the password input field$")
     public void the_password_is_typed_into_the_password_input_field(String password) {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         logInPagePageObject.writeTextToPasswordInputField(password);
+        log.info("the " + password + " password is typed into the password input field");
     }
 
     @And("^the Log In button is clicked on the Log In page$")
     public void the_Log_in_button_is_clicked_on_the_Log_in_page() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         logInPagePageObject.clickLogInButtonOnLogInPage();
+        log.info("the Log In button is clicked on the Log In page");
     }
 
     @Then("^the Reader page should be visible$")
@@ -143,6 +148,7 @@ public class WordPressBlogPostStepDef {
         assertThat(true, is(equalTo(readerPagePageObject.welcomeToReaderImageIsVisible())));
         assertThat(readerPagePageObject.readerButtonGetClass(), stringContainsInOrder(Arrays.asList("is", "active")));
         assertThat(true, is(equalTo(readerPagePageObject.searchBarIsVisible())));
+        log.info("the Reader page should be visible");
     }
 
     @After
