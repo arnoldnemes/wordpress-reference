@@ -9,6 +9,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pageObjects.BasePageObject;
@@ -24,6 +25,7 @@ import java.util.Arrays;
 
 public class WordPressBlogPostStepDef {
     private WebDriver driver;
+    static Logger log = Logger.getLogger(WordPressBlogPostStepDef.class.getName());
 
     @Before
     public void setUp() {
@@ -41,24 +43,28 @@ public class WordPressBlogPostStepDef {
         homePagePageObject.waitForWordpressLogo();
         homePagePageObject.waitForLogInButton();
         homePagePageObject.waitForGetStartedButton();
+        log.info("given lefutott");
     }
 
     @Then("^the WordPress logo should be visible$")
     public void the_wordpress_logo_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
         assertThat(true, is(equalTo(homePagePageObject.wordpressLogoIsVisible())));
+        log.info("then lefutott");
     }
 
     @And("^the Log In button should be visible$")
     public void the_log_in_button_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
         assertThat(true, is(equalTo(homePagePageObject.logInButtonIsVisible())));
+        log.info("log in button visible");
     }
 
     @And("^the Get Started button should be visible$")
     public void the_Get_Started_button_should_be_visible() {
         HomePagePageObject homePagePageObject = new HomePagePageObject(driver);
         assertThat(true, is(equalTo(homePagePageObject.getStartedButtonIsVisible())));
+        log.info("get started is visible");
     }
 
     //2.
@@ -67,30 +73,35 @@ public class WordPressBlogPostStepDef {
     public void the_Log_In_button_is_clicked() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         logInPagePageObject.clickLogInButton();
+        log.info("log in button is clicked");
     }
 
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat(true, is(equalTo(logInPagePageObject.backToWordPressButtonIsVisible())));
+        log.info("back to wordpress button is visible");
     }
 
     @And("^the continue button should be visible$")
     public void the_continue_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat(true, is(equalTo(logInPagePageObject.continueButtonIsVisible())));
+        log.info("continue button is visible");
     }
 
     @And("^the Log in to your account text should be visible$")
     public void the_Log_in_to_your_account_text_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat("Log in to your account.", is(equalTo(logInPagePageObject.logInToYourAccountText())));
+        log.info("the log in to your... text is visible");
     }
 
     @And("^the continue with google button should be visible$")
     public void the_continue_with_google_button_should_be_visible() {
         LogInPagePageObject logInPagePageObject = new LogInPagePageObject(driver);
         assertThat(true, is(equalTo(logInPagePageObject.continueWithGoogleButtonIsVisible())));
+        log.info("the continue with google is visible");
     }
 
     //3.
