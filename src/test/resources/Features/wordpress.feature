@@ -30,10 +30,9 @@ Feature: valami
     And the Blog Posts menu is clicked
     And the Add New Post button is clicked
     Then the Edit with a Visual editor button should be visible
-    And the Title placeholder should be visible true
 
     When the Test text is typed into the title text bar
-    Then the Title placeholder should be visible false
+    Then the Test text should be visible
 
     When the Test text is deleted from the title text bar
-    Then the Title placeholder should be visible true
+    Then the Test text should be hidden

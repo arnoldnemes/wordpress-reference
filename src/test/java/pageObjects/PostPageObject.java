@@ -14,7 +14,7 @@ public class PostPageObject extends BasePageObject {
     @FindBy(css = "a[title='Edit with a visual editor']")
     private WebElement visualEditorButton;
 
-    @FindBy(css = "textarea[placeholder='Title']")
+    @FindBy(css = ".editor-title textarea")
     private WebElement titleTextBar;
 
     public boolean visualEditorButtonIsVisible() {
@@ -22,13 +22,15 @@ public class PostPageObject extends BasePageObject {
         return visualEditorButton.isDisplayed();
     }
 
-    public String titleTextAreaGetPlaceholder() {
-        String placeholder;
-        return placeholder = titleTextBar.getAttribute("placeholder");
+    public String titleTextAreaGetText() {
+        String text;
+        return text = titleTextBar.getText();
     }
 
-    public boolean placeholderIsVisible() {
-        return titleTextBar.isDisplayed();
+    public boolean titleTextAreaTextIsVisible(String s) {
+        if (titleTextAreaGetText().equals(s) && !(titleTextAreaGetText().equals("")))
+            return true;
+        return false;
     }
 
     public void sendTextToTitleTextBar(String s) {

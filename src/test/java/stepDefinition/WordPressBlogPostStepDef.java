@@ -49,25 +49,25 @@ public class WordPressBlogPostStepDef {
         homePagePageObject.waitForWordpressLogo();
         homePagePageObject.waitForLogInButton();
         homePagePageObject.waitForGetStartedButton();
-        log.info("given lefutott");
+        log.info("Given was run");
     }
 
     @Then("^the WordPress logo should be visible$")
     public void the_wordpress_logo_should_be_visible() {
         assertThat(true, is(equalTo(homePagePageObject.wordpressLogoIsVisible())));
-        log.info("then lefutott");
+        log.info("Then was run");
     }
 
     @And("^the Log In button should be visible$")
     public void the_log_in_button_should_be_visible() {
         assertThat(true, is(equalTo(homePagePageObject.logInButtonIsVisible())));
-        log.info("log in button visible");
+        log.info("And was run");
     }
 
     @And("^the Get Started button should be visible$")
     public void the_Get_Started_button_should_be_visible() {
         assertThat(true, is(equalTo(homePagePageObject.getStartedButtonIsVisible())));
-        log.info("get started is visible");
+        log.info("And was run");
     }
 
     //2.
@@ -75,64 +75,64 @@ public class WordPressBlogPostStepDef {
     @When("^the Log In button is clicked$")
     public void the_Log_In_button_is_clicked() {
         logInPagePageObject.clickLogInButton();
-        log.info("log in button is clicked");
+        log.info("When was run");
     }
 
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
         assertThat(true, is(equalTo(logInPagePageObject.backToWordPressButtonIsVisible())));
-        log.info("back to wordpress button is visible");
+        log.info("Then was run");
     }
 
     @And("^the continue button should be visible$")
     public void the_continue_button_should_be_visible() {
         assertThat(true, is(equalTo(logInPagePageObject.continueButtonIsVisible())));
-        log.info("continue button is visible");
+        log.info("And was run");
     }
 
     @And("^the Log in to your account text should be visible$")
     public void the_Log_in_to_your_account_text_should_be_visible() {
         assertThat("Log in to your account.", is(equalTo(logInPagePageObject.logInToYourAccountText())));
-        log.info("the log in to your... text is visible");
+        log.info("And was run");
     }
 
     @And("^the continue with google button should be visible$")
     public void the_continue_with_google_button_should_be_visible() {
         assertThat(true, is(equalTo(logInPagePageObject.continueWithGoogleButtonIsVisible())));
-        log.info("the continue with google is visible");
+        log.info("And was run");
     }
 
     //3.
 
-    @And("^the (.*) email address is typed into the email input field$")
+    @And("^the (\\w+@\\w+.com) email address is typed into the email input field$")
     public void the_email_address_is_typed_into_the_email_input_field(String emailOrUsername) {
         assertThat(true, is(equalTo(logInPagePageObject.emailOrUsernameInputFieldIsVisible())));
         logInPagePageObject.writeTextToEmailOrUsernameInputField(emailOrUsername);
-        log.info("the " + emailOrUsername + " email adress is typed into the email input field");
+        log.info("And was run");
     }
 
     @And("^the continue button is clicked$")
     public void the_continue_button_is_clicked() {
         logInPagePageObject.clickOnContinueButton();
-        log.info("the continue button is clicked");
+        log.info("And was run");
     }
 
     @Then("^the password input field should be visible$")
     public void the_password_input_field_should_be_visible() {
         assertThat(true, is(equalTo(logInPagePageObject.passwordInputFieldIsVisible())));
-        log.info("the password input field should be visible");
+        log.info("Then was run");
     }
 
-    @When("^the (.*) password is typed into the password input field$")
+    @When("^the (\\w+) password is typed into the password input field$")
     public void the_password_is_typed_into_the_password_input_field(String password) {
         logInPagePageObject.writeTextToPasswordInputField(password);
-        log.info("the " + password + " password is typed into the password input field");
+        log.info("When was run");
     }
 
     @And("^the Log In button is clicked on the Log In page$")
     public void the_Log_in_button_is_clicked_on_the_Log_in_page() {
         logInPagePageObject.clickLogInButtonOnLogInPage();
-        log.info("the Log In button is clicked on the Log In page");
+        log.info("And was run");
     }
 
     @Then("^the Reader page should be visible$")
@@ -140,7 +140,7 @@ public class WordPressBlogPostStepDef {
         assertThat(true, is(equalTo(readerPagePageObject.welcomeToReaderImageIsVisible())));
         assertThat(readerPagePageObject.readerButtonGetClass(), stringContainsInOrder(Arrays.asList("is", "active")));
         assertThat(true, is(equalTo(readerPagePageObject.searchBarIsVisible())));
-        log.info("the Reader page should be visible");
+        log.info("Then was run");
     }
 
     //4
@@ -155,50 +155,52 @@ public class WordPressBlogPostStepDef {
         the_password_is_typed_into_the_password_input_field("test123456");
         the_Log_in_button_is_clicked_on_the_Log_in_page();
         the_Reader_page_should_be_visible();
-        log.info("the user is logged in to WordPress page");
+        log.info("Given was run");
     }
 
     @When("^the My Sites button is clicked$")
     public void the_My_Sites_button_is_clicked() {
         assertThat(true, is(equalTo(mySitesPageObject.mySitesButtonIsVisible())));
         mySitesPageObject.clickMySitesButton();
+        log.info("When was run");
     }
 
     @And("^the Blog Posts menu is clicked$")
     public void the_Blog_posts_menu_is_clicked() {
         assertThat(true, is(equalTo(mySitesPageObject.blogPostsMenuButtonIsVisible())));
         mySitesPageObject.clickBlogPostsMenuButton();
+        log.info("And was run");
     }
 
     @And("^the Add New Post button is clicked$")
     public void the_Add_New_Post_button_is_clicked() {
         assertThat(true, is(equalTo(mySitesPageObject.addNewPostButtonIsVisible())));
         mySitesPageObject.clickAddNewPostButton();
+        log.info("And was run");
     }
 
-    @Then("^the Edit with a Visual editor button should be visible$")
-    public void the_Edit_with_a_Visual_editor_button_should_be_visible() {
-        assertThat(true, is(equalTo(postPageObject.visualEditorButtonIsVisible())));
+    @Then("^the Edit with a Visual editor button should be (visible|hidden)$")
+    public void the_Edit_with_a_Visual_editor_button_should_be_visible(String visibility) {
+        assertThat(visibility.equals("visible"), is(equalTo(postPageObject.visualEditorButtonIsVisible())));
+        log.info("Then was run");
     }
 
-    @And("^the Title placeholder should be visible (true|false)$")
-    public void the_title_placeholder_should_be_visible(Boolean b) {
-        if (b) {
-            assertThat("Title", is(equalTo(postPageObject.titleTextAreaGetPlaceholder())));
-        }
-        if (!b) {
-            assertThat(false, is(equalTo(!postPageObject.placeholderIsVisible())));
-        }
+    @Then("^the (\\w+) text should be (visible|hidden)$")
+    public void the_title_placeholder_should_be_visible(String text, String visibility) {
+        assertThat(visibility.equals("visible"), is(equalTo(postPageObject.titleTextAreaTextIsVisible(text))));
+        log.info("Then was run");
     }
 
     @When("^the (\\w+) text is typed into the title text bar$")
-    public void the_text_is_typed_into_the_title_text_bar(String s) {
-        postPageObject.sendTextToTitleTextBar(s);
+    public void the_text_is_typed_into_the_title_text_bar(String title) {
+        postPageObject.sendTextToTitleTextBar(title);
+        log.info("When was run");
     }
 
     @When("^the (\\w+) text is deleted from the title text bar$")
-    public void the_text_is_deleted_from_the_title_text_bar(String s) {
-        postPageObject.deleteTitleTextBar(s);
+    public void the_text_is_deleted_from_the_title_text_bar(String title) {
+        postPageObject.deleteTitleTextBar(title);
+        log.info("When was run");
     }
 
     @After
