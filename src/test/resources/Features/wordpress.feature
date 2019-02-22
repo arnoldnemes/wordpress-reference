@@ -24,7 +24,8 @@ Feature: valami
     And the Log In button is clicked on the Log In page
     Then the Reader page should be visible
 
-  Scenario: 4. After log in the placeholder should be visible on the blog post page
+  Scenario: 4. After log in the title text should be visible on the blog post page
+  when the title text bar is cleared the text shouldn't be visible
     Given the user is logged in to WordPress page
     When the My Sites button is clicked
     And the Blog Posts menu is clicked
@@ -34,5 +35,21 @@ Feature: valami
     When the Test text is typed into the title text bar
     Then the Test text should be visible
 
-    When the Test text is deleted from the title text bar
+    When the text bar is cleared
     Then the Test text should be hidden
+
+  Scenario: 5. The Add drop down button's elements should be visible
+    Given the user is logged in to WordPress page
+    When the My Sites button is clicked
+    And the Blog Posts menu is clicked
+    And the Add New Post button is clicked
+    And the Edit with a visual editor button is clicked
+    Then the Add button should be visible
+
+    When the Add dropdown is clicked
+    Then the following buttons should be visible:
+      | Media              |
+      | Media from Google  |
+      | Free photo library |
+      | Contact form       |
+      | Payment button     |

@@ -1,10 +1,7 @@
 package pageObjects;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -46,5 +43,10 @@ public class BasePageObject {
     public void takeScreenshot() throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFileToDirectory(file, new File("src\\test\\resources"));
+    }
+
+    public WebElement findElementByXpath(String s) {
+        WebElement e;
+        return e = driver.findElement(By.xpath("//span[text()='" + s + "']"));
     }
 }

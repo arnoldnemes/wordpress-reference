@@ -19,6 +19,7 @@ import static org.hamcrest.Matchers.*;
 
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.List;
 
 public class WordPressBlogPostStepDef {
     private WebDriver driver;
@@ -27,7 +28,7 @@ public class WordPressBlogPostStepDef {
     private ReaderPagePageObject readerPagePageObject;
     private MySitesPageObject mySitesPageObject;
     private PostPageObject postPageObject;
-    Logger log = Logger.getLogger(WordPressBlogPostStepDef.class.getName());
+    private Logger log = Logger.getLogger(WordPressBlogPostStepDef.class.getName());
 
     @Before()
     public void setUp() {
@@ -46,27 +47,21 @@ public class WordPressBlogPostStepDef {
     public void the_WordPress_site_is_opened() {
         driver.get("https://wordpress.com");
         driver.manage().window().fullscreen();
-        homePagePageObject.waitForWordpressLogo();
+        homePagePageObject.waitForWordPressLogo();
         homePagePageObject.waitForLogInButton();
         homePagePageObject.waitForGetStartedButton();
         log.info("Given was run");
     }
 
     @Then("^the WordPress logo should be visible$")
-    public void the_wordpress_logo_should_be_visible() {
-        assertThat(true, is(equalTo(homePagePageObject.wordpressLogoIsVisible())));
+    public void the_WordPress_logo_should_be_visible() {
+        assertThat(true, is(equalTo(homePagePageObject.wordPressLogoIsVisible())));
         log.info("Then was run");
     }
 
-    @And("^the Log In button should be visible$")
-    public void the_log_in_button_should_be_visible() {
-        assertThat(true, is(equalTo(homePagePageObject.logInButtonIsVisible())));
-        log.info("And was run");
-    }
-
-    @And("^the Get Started button should be visible$")
-    public void the_Get_Started_button_should_be_visible() {
-        assertThat(true, is(equalTo(homePagePageObject.getStartedButtonIsVisible())));
+    @And("^the (\\w+\\s\\w+) button should be visible$")
+    public void the_log_in_button_should_be_visible(String buttonName) {
+        assertThat(true, is(equalTo(homePagePageObject.buttonIsVisibleOnHomePage(buttonName))));
         log.info("And was run");
     }
 
@@ -197,10 +192,32 @@ public class WordPressBlogPostStepDef {
         log.info("When was run");
     }
 
-    @When("^the (\\w+) text is deleted from the title text bar$")
-    public void the_text_is_deleted_from_the_title_text_bar(String title) {
-        postPageObject.deleteTitleTextBar(title);
+    @When("^the text bar is cleared$")
+    public void the_title_text_bar_is_cleared() {
+        postPageObject.clearTitleTextBar();
         log.info("When was run");
+    }
+
+    //5
+
+    @And("^the Edit with a visual editor button is clicked$")
+    public void the_Edit_with_a_visual_editor_button_is_clicked() {
+        postPageObject.clickEditWithAVisualEditorButton();
+    }
+
+    @Then("^the Add button should be visible$")
+    public void the_button_should_be_visible() {
+        assertThat(true, is(equalTo(postPageObject.addDropdownIsVisible())));
+    }
+
+    @When("^the Add dropdown is clicked$")
+    public void the_Add_dropdown_is_clicked() {
+        postPageObject.clickAddDropdown();
+    }
+
+    @Then("^the following buttons should be visible:$")
+    public void the_following_buttons_should_be_visible(List<String> dropdown) {
+        postPageObject.addDropdownButtonsElementsAreVisible(dropdown);
     }
 
     @After

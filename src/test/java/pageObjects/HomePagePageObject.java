@@ -11,19 +11,19 @@ public class HomePagePageObject extends BasePageObject {
     }
 
     @FindBy(css = ".x-icon.x-icon--logo")
-    private WebElement wordpressLogo;
+    private WebElement wordPressLogo;
 
-    @FindBy(css = ".x-nav-item.x-nav-item--wide.x-nav-item--logged-in .x-nav-link.x-link")
+    @FindBy(css = "a[title='Log In']")
     private WebElement logInButton;
 
-    @FindBy(css = ".x-nav-link.x-nav-link--primary.x-link")
+    @FindBy(css = "a[title='Get Started']")
     private WebElement getStartedButton;
 
     /**
      * Wait until the WordPress logo is visible.
      */
-    public void waitForWordpressLogo() {
-        wordpressLogo = waitForElement(wordpressLogo);
+    public void waitForWordPressLogo() {
+        wordPressLogo = waitForElement(wordPressLogo);
     }
 
     /**
@@ -45,8 +45,8 @@ public class HomePagePageObject extends BasePageObject {
      *
      * @return true if the WordPress logo is visible, false if not.
      */
-    public boolean wordpressLogoIsVisible() {
-        return wordpressLogo.isDisplayed();
+    public boolean wordPressLogoIsVisible() {
+        return wordPressLogo.isDisplayed();
     }
 
     /**
@@ -54,8 +54,13 @@ public class HomePagePageObject extends BasePageObject {
      *
      * @return true if the Log In button is visible, false if not.
      */
-    public boolean logInButtonIsVisible() {
-        return logInButton.isDisplayed();
+    public boolean buttonIsVisibleOnHomePage(String s) {
+        switch (s){
+            case "Get Started" :return getStartedButton.isDisplayed();
+            case "Log In" : return logInButton.isDisplayed();
+            default: System.out.println("The button is not found");
+        }
+        return false;
     }
 
     /**
