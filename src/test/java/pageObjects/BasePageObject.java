@@ -45,8 +45,11 @@ public class BasePageObject {
         FileUtils.copyFileToDirectory(file, new File("src\\test\\resources"));
     }
 
-    public WebElement findElementByXpath(String s) {
-        WebElement e;
-        return e = driver.findElement(By.xpath("//span[text()='" + s + "']"));
+    public WebElement findSpanElementByXpath(String s) {
+        return driver.findElement(By.xpath("//span[text()='" + s + "']"));
+    }
+
+    public WebElement findButtonElementByXpath(String s) {
+        return driver.findElement(By.xpath("//button[text()='" + s + "']"));
     }
 }

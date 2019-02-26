@@ -55,10 +55,13 @@ public class HomePagePageObject extends BasePageObject {
      * @return true if the Log In button is visible, false if not.
      */
     public boolean buttonIsVisibleOnHomePage(String s) {
-        switch (s){
-            case "Get Started" :return getStartedButton.isDisplayed();
-            case "Log In" : return logInButton.isDisplayed();
-            default: System.out.println("The button is not found");
+        switch (s) {
+            case "Get Started":
+                return getStartedButton.isDisplayed();
+            case "Log In":
+                return logInButton.isDisplayed();
+            default:
+                System.out.println("The button is not found");
         }
         return false;
     }

@@ -18,7 +18,7 @@ Feature: valami
     Given the WordPress site is opened
     When the Log In button is clicked
     And the notfunx@gmail.com email address is typed into the email input field
-    And the continue button is clicked
+    And the Continue button is clicked
     Then the password input field should be visible
     When the test123456 password is typed into the password input field
     And the Log In button is clicked on the Log In page
@@ -47,9 +47,38 @@ Feature: valami
     Then the Add button should be visible
 
     When the Add dropdown is clicked
-    Then the following buttons should be visible:
+    Then the following buttons should be visible: span
       | Media              |
       | Media from Google  |
       | Free photo library |
       | Contact form       |
       | Payment button     |
+
+  Scenario Outline: 6. The popup should be visible after the Add dropdown elements are clicked
+    Given the user is logged in to WordPress page
+    When the My Sites button is clicked
+    And the Blog Posts menu is clicked
+    And the Add New Post button is clicked
+    Then the Add button should be visible
+
+    When the Add dropdown is clicked
+    And the <button> dropdown button is clicked
+    Then the popup window should be visible
+    And the Cancel button should be visible
+    And the Insert button should be visible
+    And the Media library dropdown button should be visible
+    And the Insert button should be disabled
+    And the Cancel button should be enabled
+
+
+    When the Media library dropdown is clicked
+    Then the following buttons should be visible: button
+      | WordPress library               |
+      | Photos from your Google library |
+      | Free photo library              |
+
+    Examples:
+      | button             |
+      | Media              |
+      | Media from Google  |
+      | Free photo library |

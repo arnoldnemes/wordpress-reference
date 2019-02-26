@@ -3,6 +3,7 @@ package stepDefinition;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
+import cucumber.api.java.cs.A;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -55,58 +56,58 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the WordPress logo should be visible$")
     public void the_WordPress_logo_should_be_visible() {
-        assertThat(true, is(equalTo(homePagePageObject.wordPressLogoIsVisible())));
+        assertThat("The WordPress logo is not visible.", homePagePageObject.wordPressLogoIsVisible(), is(true));
         log.info("Then was run");
     }
 
     @And("^the (\\w+\\s\\w+) button should be visible$")
     public void the_log_in_button_should_be_visible(String buttonName) {
-        assertThat(true, is(equalTo(homePagePageObject.buttonIsVisibleOnHomePage(buttonName))));
+        assertThat("The " + buttonName + " button is not visible.", homePagePageObject.buttonIsVisibleOnHomePage(buttonName), is(true));
         log.info("And was run");
     }
 
     //2.
 
     @When("^the Log In button is clicked$")
-    public void the_Log_In_button_is_clicked() {
+    public void the_button_is_clicked() {
         logInPagePageObject.clickLogInButton();
         log.info("When was run");
     }
 
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
-        assertThat(true, is(equalTo(logInPagePageObject.backToWordPressButtonIsVisible())));
+        assertThat("The Back to WordPress button is not visible.", logInPagePageObject.backToWordPressButtonIsVisible(), is(true));
         log.info("Then was run");
     }
 
     @And("^the continue button should be visible$")
     public void the_continue_button_should_be_visible() {
-        assertThat(true, is(equalTo(logInPagePageObject.continueButtonIsVisible())));
+        assertThat("The continue button is not visible.", logInPagePageObject.continueButtonIsVisible(), is(true));
         log.info("And was run");
     }
 
     @And("^the Log in to your account text should be visible$")
     public void the_Log_in_to_your_account_text_should_be_visible() {
-        assertThat("Log in to your account.", is(equalTo(logInPagePageObject.logInToYourAccountText())));
+        assertThat("The Log in to your account text is not visible.", logInPagePageObject.logInToYourAccountText(), is(equalTo("Log in to your account.")));
         log.info("And was run");
     }
 
     @And("^the continue with google button should be visible$")
     public void the_continue_with_google_button_should_be_visible() {
-        assertThat(true, is(equalTo(logInPagePageObject.continueWithGoogleButtonIsVisible())));
+        assertThat("The continue with google button is not visible.", logInPagePageObject.continueWithGoogleButtonIsVisible(), is(true));
         log.info("And was run");
     }
 
     //3.
 
-    @And("^the (\\w+@\\w+.com) email address is typed into the email input field$")
+    @And("^the (\\w+@\\w+.\\w+) email address is typed into the email input field$")
     public void the_email_address_is_typed_into_the_email_input_field(String emailOrUsername) {
-        assertThat(true, is(equalTo(logInPagePageObject.emailOrUsernameInputFieldIsVisible())));
+        assertThat("The " + emailOrUsername + " email failed to type into the email input field.", logInPagePageObject.emailOrUsernameInputFieldIsVisible(), is(true));
         logInPagePageObject.writeTextToEmailOrUsernameInputField(emailOrUsername);
         log.info("And was run");
     }
 
-    @And("^the continue button is clicked$")
+    @And("^the Continue button is clicked$")
     public void the_continue_button_is_clicked() {
         logInPagePageObject.clickOnContinueButton();
         log.info("And was run");
@@ -114,7 +115,7 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the password input field should be visible$")
     public void the_password_input_field_should_be_visible() {
-        assertThat(true, is(equalTo(logInPagePageObject.passwordInputFieldIsVisible())));
+        assertThat("The password input field is not visible.", logInPagePageObject.passwordInputFieldIsVisible(), is(true));
         log.info("Then was run");
     }
 
@@ -132,9 +133,11 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the Reader page should be visible$")
     public void the_Reader_page_should_be_visible() {
-        assertThat(true, is(equalTo(readerPagePageObject.welcomeToReaderImageIsVisible())));
-        assertThat(readerPagePageObject.readerButtonGetClass(), stringContainsInOrder(Arrays.asList("is", "active")));
-        assertThat(true, is(equalTo(readerPagePageObject.searchBarIsVisible())));
+        assertThat("The Welcome to Reader image is not visible.", readerPagePageObject.welcomeToReaderImageIsVisible(),
+                is(true));
+        assertThat("The Reader button is not active.", readerPagePageObject.readerButtonGetClass(),
+                stringContainsInOrder(Arrays.asList("is", "active")));
+        assertThat("The search bar is not visible.", readerPagePageObject.searchBarIsVisible(), is(true));
         log.info("Then was run");
     }
 
@@ -143,7 +146,7 @@ public class WordPressBlogPostStepDef {
     @Given("^the user is logged in to WordPress page$")
     public void the_user_is_logged_in_to_WordPress_page() {
         the_WordPress_site_is_opened();
-        the_Log_In_button_is_clicked();
+        the_button_is_clicked();
         the_email_address_is_typed_into_the_email_input_field("notfunx@gmail.com");
         the_continue_button_is_clicked();
         the_password_input_field_should_be_visible();
@@ -155,34 +158,36 @@ public class WordPressBlogPostStepDef {
 
     @When("^the My Sites button is clicked$")
     public void the_My_Sites_button_is_clicked() {
-        assertThat(true, is(equalTo(mySitesPageObject.mySitesButtonIsVisible())));
+        assertThat("The My Sites button is not visible.", mySitesPageObject.mySitesButtonIsVisible(), is(true));
         mySitesPageObject.clickMySitesButton();
         log.info("When was run");
     }
 
     @And("^the Blog Posts menu is clicked$")
     public void the_Blog_posts_menu_is_clicked() {
-        assertThat(true, is(equalTo(mySitesPageObject.blogPostsMenuButtonIsVisible())));
+        assertThat("The Blog Posts menu button is not visible.", mySitesPageObject.blogPostsMenuButtonIsVisible(), is(true));
         mySitesPageObject.clickBlogPostsMenuButton();
         log.info("And was run");
     }
 
     @And("^the Add New Post button is clicked$")
     public void the_Add_New_Post_button_is_clicked() {
-        assertThat(true, is(equalTo(mySitesPageObject.addNewPostButtonIsVisible())));
+        assertThat("The Add New Post button is not visible.", mySitesPageObject.addNewPostButtonIsVisible(), is(true));
         mySitesPageObject.clickAddNewPostButton();
         log.info("And was run");
     }
 
     @Then("^the Edit with a Visual editor button should be (visible|hidden)$")
     public void the_Edit_with_a_Visual_editor_button_should_be_visible(String visibility) {
-        assertThat(visibility.equals("visible"), is(equalTo(postPageObject.visualEditorButtonIsVisible())));
+        assertThat("The Edit with a Visual editor button is not " + visibility + ".", visibility.equals("visible"),
+                is(equalTo(postPageObject.visualEditorButtonIsVisible())));
         log.info("Then was run");
     }
 
     @Then("^the (\\w+) text should be (visible|hidden)$")
     public void the_title_placeholder_should_be_visible(String text, String visibility) {
-        assertThat(visibility.equals("visible"), is(equalTo(postPageObject.titleTextAreaTextIsVisible(text))));
+        assertThat("The " + text + " is not " + visibility + ".", visibility.equals("visible"),
+                is(equalTo(postPageObject.titleTextAreaTextIsVisible(text))));
         log.info("Then was run");
     }
 
@@ -207,7 +212,7 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the Add button should be visible$")
     public void the_button_should_be_visible() {
-        assertThat(true, is(equalTo(postPageObject.addDropdownIsVisible())));
+        assertThat("The Add button is not visible.", postPageObject.addDropdownIsVisible(), is(true));
     }
 
     @When("^the Add dropdown is clicked$")
@@ -215,9 +220,44 @@ public class WordPressBlogPostStepDef {
         postPageObject.clickAddDropdown();
     }
 
-    @Then("^the following buttons should be visible:$")
-    public void the_following_buttons_should_be_visible(List<String> dropdown) {
-        postPageObject.addDropdownButtonsElementsAreVisible(dropdown);
+    @Then("^the following buttons should be visible: (.+)$")
+    public void the_following_buttons_should_be_visible(String asd,List<String> dropdown) {
+        postPageObject.addDropdownButtonsElementsAreVisible(dropdown,asd);
+    }
+
+    //6
+
+    @And("^the (.+) dropdown button is clicked$")
+    public void the_dropdown_button_is_clicked(String dropdown) {
+        postPageObject.clickTheAddDropdownButtonsElements(dropdown);
+    }
+
+    @Then("^the popup window should be visible$")
+    public void the_popup_window_should_be_visible() {
+        postPageObject.popupWindowIsVisible();
+    }
+
+    @And("^the (Cancel|Insert) button should be visible$")
+    public void the_button_should_be_visible_on_the_popup_window(String buttonName) {
+        assertThat("The " + buttonName + " button is not visible.",
+                postPageObject.popupButtonsIsVisible(buttonName), is(true));
+    }
+
+    @And("^the Media library dropdown button should be visible$")
+    public void the_Media_library_dropdown_button_should_be_visible() {
+        assertThat("The Media library dropdown button is not visible.",
+                postPageObject.mediaLibraryDropdownButtonIsVisible(), is(true));
+    }
+
+    @And("^the (Insert|Cancel) button should be (disabled|enabled)$")
+    public void the_Insert_button_should_be_disabled(String buttonName, String state) {
+        assertThat("The " + buttonName + " button is not " + state + ".",
+                postPageObject.theButtonIsDisabled(state), is(true));
+    }
+
+    @When("^the Media library dropdown is clicked$")
+    public void the_Media_library_dropdown_is_clicked() {
+        postPageObject.clickMediaLibraryDropdownButton();
     }
 
     @After
@@ -225,6 +265,7 @@ public class WordPressBlogPostStepDef {
         BasePageObject basePageObject = new BasePageObject(driver);
         if (scenario.isFailed()) {
             basePageObject.takeScreenshot();
+            System.out.println("The " + scenario.getName() + " is failed.");
         }
         driver.close();
         driver.quit();
