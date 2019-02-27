@@ -50,9 +50,9 @@ public class HomePagePageObject extends BasePageObject {
     }
 
     /**
-     * Check the Log In button is visible.
+     * Check the given button is visible.
      *
-     * @return true if the Log In button is visible, false if not.
+     * @return true if the given button is visible, false if not.
      */
     public boolean buttonIsVisibleOnHomePage(String s) {
         switch (s) {

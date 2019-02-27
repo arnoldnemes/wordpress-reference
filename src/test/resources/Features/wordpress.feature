@@ -1,4 +1,4 @@
-Feature: valami
+Feature: Blog Posts feature
 
   Scenario: 1. The home page should be visible
     Given the WordPress site is opened
@@ -47,7 +47,7 @@ Feature: valami
     Then the Add button should be visible
 
     When the Add dropdown is clicked
-    Then the following buttons should be visible: span
+    Then the following span type buttons should be visible:
       | Media              |
       | Media from Google  |
       | Free photo library |
@@ -70,9 +70,8 @@ Feature: valami
     And the Insert button should be disabled
     And the Cancel button should be enabled
 
-
     When the Media library dropdown is clicked
-    Then the following buttons should be visible: button
+    Then the following button type buttons should be visible:
       | WordPress library               |
       | Photos from your Google library |
       | Free photo library              |

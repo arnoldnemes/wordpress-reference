@@ -1,6 +1,7 @@
 package pageObjects;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -11,6 +12,7 @@ import java.io.IOException;
 
 public class BasePageObject {
     private WebDriver driver;
+    private Logger log = Logger.getLogger(BasePageObject.class.getName());
 
     public BasePageObject(WebDriver driver) {
         this.driver = driver;
@@ -21,12 +23,11 @@ public class BasePageObject {
      * @return
      */
     private WebDriverWait explicitWait() {
-        WebDriverWait wait;
-        return wait = new WebDriverWait(driver, 5);
+        return new WebDriverWait(driver, 5);
     }
 
     /**
-     * Wait for web element until it is visible.
+     * Wait for web element until it will be visible.
      *
      * @param el
      * @return a web element
@@ -43,6 +44,7 @@ public class BasePageObject {
     public void takeScreenshot() throws IOException {
         File file = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
         FileUtils.copyFileToDirectory(file, new File("src\\test\\resources"));
+        log.info("Screenshot was taken.");
     }
 
     public WebElement findSpanElementByXpath(String s) {

@@ -3,7 +3,6 @@ package stepDefinition;
 import cucumber.api.Scenario;
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
-import cucumber.api.java.cs.A;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -208,21 +207,25 @@ public class WordPressBlogPostStepDef {
     @And("^the Edit with a visual editor button is clicked$")
     public void the_Edit_with_a_visual_editor_button_is_clicked() {
         postPageObject.clickEditWithAVisualEditorButton();
+        log.info("And was run");
     }
 
     @Then("^the Add button should be visible$")
     public void the_button_should_be_visible() {
         assertThat("The Add button is not visible.", postPageObject.addDropdownIsVisible(), is(true));
+        log.info("Then was run");
     }
 
     @When("^the Add dropdown is clicked$")
     public void the_Add_dropdown_is_clicked() {
         postPageObject.clickAddDropdown();
+        log.info("When was run");
     }
 
-    @Then("^the following buttons should be visible: (.+)$")
-    public void the_following_buttons_should_be_visible(String asd,List<String> dropdown) {
-        postPageObject.addDropdownButtonsElementsAreVisible(dropdown,asd);
+    @Then("^the following (.+) type buttons should be visible:$")
+    public void the_following_buttons_should_be_visible(String type, List<String> dropdown) {
+        postPageObject.addDropdownButtonsElementsAreVisible(dropdown, type);
+        log.info("Then was run");
     }
 
     //6
@@ -230,34 +233,40 @@ public class WordPressBlogPostStepDef {
     @And("^the (.+) dropdown button is clicked$")
     public void the_dropdown_button_is_clicked(String dropdown) {
         postPageObject.clickTheAddDropdownButtonsElements(dropdown);
+        log.info("And was run");
     }
 
     @Then("^the popup window should be visible$")
     public void the_popup_window_should_be_visible() {
-        postPageObject.popupWindowIsVisible();
+        assertThat("The popup window is not visible.", postPageObject.popupWindowIsVisible(), is(true));
+        log.info("Then was run");
     }
 
     @And("^the (Cancel|Insert) button should be visible$")
     public void the_button_should_be_visible_on_the_popup_window(String buttonName) {
         assertThat("The " + buttonName + " button is not visible.",
                 postPageObject.popupButtonsIsVisible(buttonName), is(true));
+        log.info("And was run");
     }
 
     @And("^the Media library dropdown button should be visible$")
     public void the_Media_library_dropdown_button_should_be_visible() {
         assertThat("The Media library dropdown button is not visible.",
                 postPageObject.mediaLibraryDropdownButtonIsVisible(), is(true));
+        log.info("And was run");
     }
 
     @And("^the (Insert|Cancel) button should be (disabled|enabled)$")
     public void the_Insert_button_should_be_disabled(String buttonName, String state) {
         assertThat("The " + buttonName + " button is not " + state + ".",
                 postPageObject.theButtonIsDisabled(state), is(true));
+        log.info("And was run");
     }
 
     @When("^the Media library dropdown is clicked$")
     public void the_Media_library_dropdown_is_clicked() {
         postPageObject.clickMediaLibraryDropdownButton();
+        log.info("And was run");
     }
 
     @After
@@ -265,7 +274,9 @@ public class WordPressBlogPostStepDef {
         BasePageObject basePageObject = new BasePageObject(driver);
         if (scenario.isFailed()) {
             basePageObject.takeScreenshot();
-            System.out.println("The " + scenario.getName() + " is failed.");
+            log.info("The '" + scenario.getName() + "' scenario is failed.");
+        } else {
+            log.info("The scenario ran successfully.");
         }
         driver.close();
         driver.quit();

@@ -1,10 +1,13 @@
 package pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class MySitesPageObject extends BasePageObject {
+
+    private Logger log = Logger.getLogger(MySitesPageObject.class.getName());
 
     public MySitesPageObject(WebDriver driver) {
         super(driver);
@@ -26,6 +29,7 @@ public class MySitesPageObject extends BasePageObject {
 
     public void clickMySitesButton() {
         mySitesButton.click();
+        log.info("The Blog Posts menu button is clicked.");
     }
 
     public boolean blogPostsMenuButtonIsVisible() {
@@ -35,6 +39,7 @@ public class MySitesPageObject extends BasePageObject {
 
     public void clickBlogPostsMenuButton() {
         blogPostsMenuButton.click();
+        log.info("The Blog Posts menu button is clicked.");
     }
 
     public boolean addNewPostButtonIsVisible() {
@@ -44,5 +49,6 @@ public class MySitesPageObject extends BasePageObject {
 
     public void clickAddNewPostButton() {
         addNewPostButton.click();
+        log.info("The Add New Post button is clicked.");
     }
 }

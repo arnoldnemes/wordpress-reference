@@ -1,10 +1,13 @@
 package pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
 public class LogInPagePageObject extends BasePageObject {
+
+    private Logger log = Logger.getLogger(LogInPagePageObject.class.getName());
 
     public LogInPagePageObject(WebDriver driver) {
         super(driver);
@@ -39,6 +42,7 @@ public class LogInPagePageObject extends BasePageObject {
      */
     public void clickLogInButton() {
         logInButton.click();
+        log.info("The Log In button is clicked.");
     }
 
     /**
@@ -93,8 +97,9 @@ public class LogInPagePageObject extends BasePageObject {
      *
      * @param
      */
-    public void writeTextToEmailOrUsernameInputField(String s) {
-        emailOrUsernameInputField.sendKeys(s);
+    public void writeTextToEmailOrUsernameInputField(String emailOrUsername) {
+        emailOrUsernameInputField.sendKeys(emailOrUsername);
+        log.info("The '" + emailOrUsername + "' text is sent to the Email input field.");
     }
 
     /**
@@ -102,6 +107,7 @@ public class LogInPagePageObject extends BasePageObject {
      */
     public void clickOnContinueButton() {
         continueButton.click();
+        log.info("The Continue button is clicked.");
     }
 
     /**
@@ -121,6 +127,7 @@ public class LogInPagePageObject extends BasePageObject {
      */
     public void writeTextToPasswordInputField(String s) {
         passwordInputField.sendKeys(s);
+        log.info("The '" + s + "' text was sent to the password input field.");
     }
 
     /**
@@ -128,5 +135,6 @@ public class LogInPagePageObject extends BasePageObject {
      */
     public void clickLogInButtonOnLogInPage() {
         logInButtonOnLogInPage.click();
+        log.info("The Log In button on the Log In page is clicked.");
     }
 }

@@ -1,5 +1,6 @@
 package pageObjects;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,8 +11,9 @@ import java.util.List;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 
-
 public class PostPageObject extends BasePageObject {
+
+    private Logger log = Logger.getLogger(PostPageObject.class.getName());
 
     public PostPageObject(WebDriver driver) {
         super(driver);
@@ -56,16 +58,19 @@ public class PostPageObject extends BasePageObject {
 
     public void sendTextToTitleTextBar(String s) {
         titleTextBar.sendKeys(s);
+        log.info("The '" + s + "' text was sent to the title bar.");
     }
 
     public void clearTitleTextBar() {
         titleTextBar.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         titleTextBar.sendKeys(Keys.BACK_SPACE);
+        log.info("Title text bar cleared.");
     }
 
     public void clickEditWithAVisualEditorButton() {
         editWithAVisualEditorButton = waitForElement(editWithAVisualEditorButton);
         editWithAVisualEditorButton.click();
+        log.info("The Edit with a visual editor button is clicked.");
     }
 
     public boolean addDropdownIsVisible() {
@@ -74,23 +79,29 @@ public class PostPageObject extends BasePageObject {
     }
 
     public void clickAddDropdown() {
+        addDropdown = waitForElement(addDropdown);
         addDropdown.click();
+        log.info("The Add dropdown is clicked.");
     }
 
-    public void addDropdownButtonsElementsAreVisible(List<String> dropdown, String asd) {
-        if(asd.equals("span")){
-        for (String dd : dropdown) {
-            assertThat("The " + dd + " button is not visible!", findSpanElementByXpath(dd).isDisplayed(), is(true));
-        }}
-        if(asd.equals("button")){
-            for (String dd : dropdown) {
-                assertThat("The " + dd + " button is not visible!", findButtonElementByXpath(dd).isDisplayed(), is(true));
-            }
+    public void addDropdownButtonsElementsAreVisible(List<String> dropdown, String type) {
+        switch (type) {
+            case "span":
+                for (String dd : dropdown) {
+                    assertThat("The " + dd + " button is not visible!", findSpanElementByXpath(dd).isDisplayed(), is(true));
+                }
+                break;
+            case "button":
+                for (String dd : dropdown) {
+                    assertThat("The " + dd + " button is not visible!", findButtonElementByXpath(dd).isDisplayed(), is(true));
+                }
+                break;
         }
     }
 
     public void clickTheAddDropdownButtonsElements(String dropdown) {
         findSpanElementByXpath(dropdown).click();
+        log.info("The '" + dropdown + "' button is clicked.");
     }
 
     public boolean popupWindowIsVisible() {
@@ -126,6 +137,8 @@ public class PostPageObject extends BasePageObject {
     }
 
     public void clickMediaLibraryDropdownButton() {
+        mediaLibraryDropdownButton = waitForElement(mediaLibraryDropdownButton);
         mediaLibraryDropdownButton.click();
+        log.info("Media library dropdown button was clicked.");
     }
 }
