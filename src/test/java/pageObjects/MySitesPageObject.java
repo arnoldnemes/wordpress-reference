@@ -29,7 +29,7 @@ public class MySitesPageObject extends BasePageObject {
 
     public void clickMySitesButton() {
         mySitesButton.click();
-        log.info("The Blog Posts menu button is clicked.");
+        log.info("The My Sites button is clicked.");
     }
 
     public boolean blogPostsMenuButtonIsVisible() {

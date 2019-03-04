@@ -6,9 +6,9 @@ addons:
     packages:
       - oracle-java8-installer
       - google-chrome-stable
-    sources:
-      - google-chrome
-
+#    sources:
+#      - google-chrome
+#
 matrix:
   allow_failures:
     - java: 5
