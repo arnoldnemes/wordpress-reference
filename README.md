@@ -1,3 +1,8 @@
-#Automation test on WordPress site.
-
-Used tecnologies and frameworks: Java, Maven, Selenium, Cucumber.
+Automation test on WordPress site.
+==================================
+Used technologies and frameworks:
+-------------------------------
+* Java
+* Maven
+* Selenium
+* Cucumber
