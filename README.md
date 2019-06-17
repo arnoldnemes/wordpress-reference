@@ -1,4 +1,4 @@
-Automation test on WordPress site.
+Automation tests on WordPress site.
 ==================================
 Used technologies and frameworks:
 -------------------------------
@@ -6,3 +6,4 @@ Used technologies and frameworks:
 * Maven
 * Selenium
 * Cucumber
+* Travis CI
