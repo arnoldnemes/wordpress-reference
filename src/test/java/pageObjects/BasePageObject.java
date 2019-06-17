@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.io.File;
 import java.io.IOException;
 
+
 public class BasePageObject {
     private WebDriver driver;
     private Logger log = Logger.getLogger(BasePageObject.class.getName());
@@ -20,21 +21,16 @@ public class BasePageObject {
     }
 
     /**
-     * @return
-     */
-    private WebDriverWait explicitWait() {
-        return new WebDriverWait(driver, 5);
-    }
-
-    /**
      * Wait for web element until it will be visible.
      *
      * @param el
      * @return a web element
      */
-    public WebElement waitForElement(WebElement el) {
-        return explicitWait().until(ExpectedConditions.visibilityOf(el));
+
+    void waitForElement(WebElement el) {
+        new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOf(el));
     }
+
 
     /**
      * Create a .png screenshot to src/test/resources folder.
@@ -47,10 +43,22 @@ public class BasePageObject {
         log.info("Screenshot was taken.");
     }
 
+    /**
+     * Find the span element with the parameter name by xpath.
+     *
+     * @param s
+     * @return a web element
+     */
     public WebElement findSpanElementByXpath(String s) {
         return driver.findElement(By.xpath("//span[text()='" + s + "']"));
     }
 
+    /**
+     * Find the button element with the parameter name by xpath.
+     *
+     * @param s
+     * @return a web element
+     */
     public WebElement findButtonElementByXpath(String s) {
         return driver.findElement(By.xpath("//button[text()='" + s + "']"));
     }

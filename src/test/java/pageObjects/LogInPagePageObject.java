@@ -51,7 +51,7 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the Continue button is visible, false if not.
      */
     public boolean continueButtonIsVisible() {
-        continueButton = waitForElement(continueButton);
+        waitForElement(continueButton);
         return continueButton.isDisplayed();
     }
 
@@ -68,7 +68,7 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the ContinueWithGoogle button is visible, false if not.
      */
     public boolean continueWithGoogleButtonIsVisible() {
-        continueWithGoogleButton = waitForElement(continueWithGoogleButton);
+        waitForElement(continueWithGoogleButton);
         return continueWithGoogleButton.isDisplayed();
     }
 
@@ -78,7 +78,7 @@ public class LogInPagePageObject extends BasePageObject {
      * @return true if the Back to WordPress button is visible, false if not.
      */
     public boolean backToWordPressButtonIsVisible() {
-        backToWordPressButton = waitForElement(backToWordPressButton);
+        waitForElement(backToWordPressButton);
         return backToWordPressButton.isDisplayed();
     }
 
@@ -88,7 +88,7 @@ public class LogInPagePageObject extends BasePageObject {
      * @return ture is the Email or Username input field is visible, false if not.
      */
     public boolean emailOrUsernameInputFieldIsVisible() {
-        emailOrUsernameInputField = waitForElement(emailOrUsernameInputField);
+        waitForElement(emailOrUsernameInputField);
         return emailOrUsernameInputField.isDisplayed();
     }
 
@@ -115,8 +115,9 @@ public class LogInPagePageObject extends BasePageObject {
      *
      * @return true if the Password field is visible, false if not.
      */
+
     public boolean passwordInputFieldIsVisible() {
-        passwordInputField = waitForElement(passwordInputField);
+        waitForElement(passwordInputField);
         return passwordInputField.isDisplayed();
     }
 

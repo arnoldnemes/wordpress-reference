@@ -43,47 +43,95 @@ public class PostPageObject extends BasePageObject {
     @FindBy(css = ".button.button.media-library__source-button.is-borderless")
     private WebElement mediaLibraryDropdownButton;
 
+    /**
+     * Check the Visual Editor button is visible.
+     *
+     * @return true if the Visual Editor button is visible, false if not.
+     */
     public boolean visualEditorButtonIsVisible() {
-        visualEditorButton = waitForElement(visualEditorButton);
+        waitForElement(visualEditorButton);
         return visualEditorButton.isDisplayed();
     }
 
-    public String titleTextAreaGetText() {
+    /**
+     * @return the title area's text.
+     */
+    public String titleAreaGetText() {
         return titleTextBar.getText();
     }
 
-    public boolean titleTextAreaTextIsVisible(String s) {
-        return titleTextAreaGetText().equals(s) && !(titleTextAreaGetText().equals(""));
+    /**
+     * Check the title area's text equals with the text passed by parameter.
+     *
+     * @param s
+     * @return true if the title areas"s text equals with the text passed by parameter, and the title area's text not empty
+     * else false.
+     */
+    public boolean titleAreaTextIsVisible(String s) {
+        return titleAreaGetText().equals(s) && !(titleAreaGetText().equals(""));
     }
 
+    /**
+     * Send the text passed by parameter to the title bar.
+     *
+     * @param s
+     */
     public void sendTextToTitleTextBar(String s) {
         titleTextBar.sendKeys(s);
         log.info("The '" + s + "' text was sent to the title bar.");
     }
 
+    /**
+     * Delete the text from the title text bar.
+     */
     public void clearTitleTextBar() {
         titleTextBar.sendKeys(Keys.chord(Keys.CONTROL, "a"));
         titleTextBar.sendKeys(Keys.BACK_SPACE);
         log.info("Title text bar cleared.");
     }
 
+    /**
+     * Check the Edit with a visual editor button is visible.
+     *
+     * @return true if the Edit with a visual editor button is visible, false if not.
+     */
+    public boolean editWithAVisualEditorButtonIsVisible() {
+        waitForElement(editWithAVisualEditorButton);
+        return editWithAVisualEditorButton.isDisplayed();
+    }
+
+    /**
+     * Click the Edit with a visual editor button.
+     */
     public void clickEditWithAVisualEditorButton() {
-        editWithAVisualEditorButton = waitForElement(editWithAVisualEditorButton);
         editWithAVisualEditorButton.click();
         log.info("The Edit with a visual editor button is clicked.");
     }
 
+    /**
+     * Check the Add Dropdown button is visible.
+     *
+     * @return true if the Add Dropdown button is visible, false if not.
+     */
     public boolean addDropdownIsVisible() {
-        addDropdown = waitForElement(addDropdown);
+        waitForElement(addDropdown);
         return addDropdown.isDisplayed();
     }
 
+    /**
+     * Click on the Add Dropdown button.
+     */
     public void clickAddDropdown() {
-        addDropdown = waitForElement(addDropdown);
         addDropdown.click();
         log.info("The Add dropdown is clicked.");
     }
 
+    /**
+     * Check the given type dropdown button is visible.
+     *
+     * @param dropdown
+     * @param type
+     */
     public void addDropdownButtonsElementsAreVisible(List<String> dropdown, String type) {
         switch (type) {
             case "span":
@@ -99,33 +147,61 @@ public class PostPageObject extends BasePageObject {
         }
     }
 
+    /**
+     * Click the dropdown button passed by parameter.
+     *
+     * @param dropdown
+     */
     public void clickTheAddDropdownButtonsElements(String dropdown) {
         findSpanElementByXpath(dropdown).click();
         log.info("The '" + dropdown + "' button is clicked.");
     }
 
+    /**
+     * Check the popup window is visible.
+     *
+     * @return true if the popup window is visible, false if not.
+     */
     public boolean popupWindowIsVisible() {
-        popupWindow = waitForElement(popupWindow);
+        waitForElement(popupWindow);
         return popupWindow.isDisplayed();
     }
 
+    /**
+     * Check the cancel and insert button is visible on the popup window.
+     *
+     * @param buttonName
+     * @return true if visible, false if not.
+     */
     public boolean popupButtonsIsVisible(String buttonName) {
         switch (buttonName) {
             case "Cancel":
-                popupCancelButton = waitForElement(popupCancelButton);
+                waitForElement(popupCancelButton);
                 return popupCancelButton.isDisplayed();
             case "Insert":
-                popupInsertButton = waitForElement(popupInsertButton);
+                waitForElement(popupInsertButton);
                 return popupInsertButton.isDisplayed();
         }
         return false;
     }
 
+    /**
+     * Check the Media Library dropdown button is visible.
+     *
+     * @return true if the Media Library dropdown button is visible, false if not.
+     */
     public boolean mediaLibraryDropdownButtonIsVisible() {
-        mediaLibraryDropdownButton = waitForElement(mediaLibraryDropdownButton);
+        waitForElement(mediaLibraryDropdownButton);
         return mediaLibraryDropdownButton.isDisplayed();
     }
 
+    /**
+     * Check the buttons state.
+     *
+     * @param state
+     * @return true if the insert button is disabled and the cancel button is enabled
+     * false if the insert button is enabled and the cancel button is disabled.
+     */
     public boolean theButtonIsDisabled(String state) {
         switch (state) {
             case "disabled":
@@ -136,8 +212,11 @@ public class PostPageObject extends BasePageObject {
         return false;
     }
 
+    /**
+     * Click the Media Library dropdown button.
+     */
     public void clickMediaLibraryDropdownButton() {
-        mediaLibraryDropdownButton = waitForElement(mediaLibraryDropdownButton);
+        waitForElement(mediaLibraryDropdownButton);
         mediaLibraryDropdownButton.click();
         log.info("Media library dropdown button was clicked.");
     }

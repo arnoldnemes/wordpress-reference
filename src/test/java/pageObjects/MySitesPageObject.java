@@ -16,39 +16,84 @@ public class MySitesPageObject extends BasePageObject {
     @FindBy(css = "a[data-tip-target='my-sites']")
     private WebElement mySitesButton;
 
-    @FindBy(css = "span[data-e2e-sidebar='Blog Posts']")
-    private WebElement blogPostsMenuButton;
+    @FindBy(xpath = "//span[text()='Site']")
+    private WebElement siteDropdownButton;
 
     @FindBy(css = ".empty-content__action.button.is-primary")
     private WebElement addNewPostButton;
 
+    @FindBy(css = "span[data-e2e-sidebar='Posts']")
+    private WebElement postsButton;
+
+    /**
+     * Check the My Sites button is visible.
+     *
+     * @return true if the My Sites button is visible, false if not.
+     */
     public boolean mySitesButtonIsVisible() {
-        mySitesButton = waitForElement(mySitesButton);
+        waitForElement(mySitesButton);
         return mySitesButton.isDisplayed();
     }
 
+    /**
+     * Click the My Sites button.
+     */
     public void clickMySitesButton() {
         mySitesButton.click();
         log.info("The My Sites button is clicked.");
     }
 
-    public boolean blogPostsMenuButtonIsVisible() {
-        blogPostsMenuButton = waitForElement(blogPostsMenuButton);
-        return blogPostsMenuButton.isDisplayed();
+    /**
+     * Check the Site dropdown button is visible.
+     *
+     * @return true if the Site dropdown visible, false if not.
+     */
+    public boolean siteDropdownButtonIsVisible() {
+        waitForElement(siteDropdownButton);
+        return siteDropdownButton.isDisplayed();
     }
 
-    public void clickBlogPostsMenuButton() {
-        blogPostsMenuButton.click();
-        log.info("The Blog Posts menu button is clicked.");
+    /**
+     * Click the Site dropdown button.
+     */
+    public void clickSiteDropdownButton() {
+        siteDropdownButton.click();
+        log.info("The Site dropdown button is clicked.");
     }
 
+    /**
+     * Check the Add New Post button is visible.
+     *
+     * @return true if the Add New Post button is visible, false if not.
+     */
     public boolean addNewPostButtonIsVisible() {
-        addNewPostButton = waitForElement(addNewPostButton);
+        waitForElement(addNewPostButton);
         return addNewPostButton.isDisplayed();
     }
 
+    /**
+     * Click the Add New Post button.
+     */
     public void clickAddNewPostButton() {
         addNewPostButton.click();
         log.info("The Add New Post button is clicked.");
+    }
+
+    /**
+     * Click the Posts button.
+     */
+    public void clickPostsButton() {
+        postsButton.click();
+        log.info("The Post button is clicked.");
+    }
+
+    /**
+     * Check the Posts button is visible.
+     *
+     * @return true if the Posts button is visible, false if not.
+     */
+    public boolean postsButtonIsVisible() {
+        waitForElement(postsButton);
+        return postsButton.isDisplayed();
     }
 }

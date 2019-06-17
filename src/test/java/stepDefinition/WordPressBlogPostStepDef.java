@@ -55,13 +55,15 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the WordPress logo should be visible$")
     public void the_WordPress_logo_should_be_visible() {
-        assertThat("The WordPress logo is not visible.", homePagePageObject.wordPressLogoIsVisible(), is(true));
+        assertThat("The WordPress logo is not visible.",
+                homePagePageObject.wordPressLogoIsVisible(), is(true));
         log.info("Then was run");
     }
 
     @And("^the (\\w+\\s\\w+) button should be visible$")
-    public void the_log_in_button_should_be_visible(String buttonName) {
-        assertThat("The " + buttonName + " button is not visible.", homePagePageObject.buttonIsVisibleOnHomePage(buttonName), is(true));
+    public void the_button_should_be_visible(String buttonName) {
+        assertThat("The " + buttonName + " button is not visible.",
+                homePagePageObject.buttonIsVisibleOnHomePage(buttonName), is(true));
         log.info("And was run");
     }
 
@@ -75,13 +77,15 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the Back to WordPress button should be visible$")
     public void the_Back_to_WordPress_button_should_be_visible() {
-        assertThat("The Back to WordPress button is not visible.", logInPagePageObject.backToWordPressButtonIsVisible(), is(true));
+        assertThat("The Back to WordPress button is not visible.",
+                logInPagePageObject.backToWordPressButtonIsVisible(), is(true));
         log.info("Then was run");
     }
 
     @And("^the continue button should be visible$")
     public void the_continue_button_should_be_visible() {
-        assertThat("The continue button is not visible.", logInPagePageObject.continueButtonIsVisible(), is(true));
+        assertThat("The continue button is not visible.",
+                logInPagePageObject.continueButtonIsVisible(), is(true));
         log.info("And was run");
     }
 
@@ -114,7 +118,8 @@ public class WordPressBlogPostStepDef {
 
     @Then("^the password input field should be visible$")
     public void the_password_input_field_should_be_visible() {
-        assertThat("The password input field is not visible.", logInPagePageObject.passwordInputFieldIsVisible(), is(true));
+        assertThat("The password input field is not visible.",
+                logInPagePageObject.passwordInputFieldIsVisible(), is(true));
         log.info("Then was run");
     }
 
@@ -162,11 +167,17 @@ public class WordPressBlogPostStepDef {
         log.info("When was run");
     }
 
-    @And("^the Blog Posts menu is clicked$")
-    public void the_Blog_posts_menu_is_clicked() {
-        assertThat("The Blog Posts menu button is not visible.", mySitesPageObject.blogPostsMenuButtonIsVisible(), is(true));
-        mySitesPageObject.clickBlogPostsMenuButton();
+    @And("^the Site dropdown is clicked$")
+    public void the_Site_dropdown_is_clicked() {
+        assertThat("The Site dropdown button is not visible.", mySitesPageObject.siteDropdownButtonIsVisible(), is(true));
+        mySitesPageObject.clickSiteDropdownButton();
         log.info("And was run");
+    }
+
+    @And("^the Posts button is clicked$")
+    public void the_Posts_button_is_clicked() {
+        assertThat("The Posts button is not visible", mySitesPageObject.postsButtonIsVisible(), is(true));
+        mySitesPageObject.clickPostsButton();
     }
 
     @And("^the Add New Post button is clicked$")
@@ -186,7 +197,7 @@ public class WordPressBlogPostStepDef {
     @Then("^the (\\w+) text should be (visible|hidden)$")
     public void the_title_placeholder_should_be_visible(String text, String visibility) {
         assertThat("The " + text + " is not " + visibility + ".", visibility.equals("visible"),
-                is(equalTo(postPageObject.titleTextAreaTextIsVisible(text))));
+                is(equalTo(postPageObject.titleAreaTextIsVisible(text))));
         log.info("Then was run");
     }
 
@@ -206,6 +217,7 @@ public class WordPressBlogPostStepDef {
 
     @And("^the Edit with a visual editor button is clicked$")
     public void the_Edit_with_a_visual_editor_button_is_clicked() {
+        assertThat("The Edit with a visual editor button is not visible", postPageObject.editWithAVisualEditorButtonIsVisible(), is(true));
         postPageObject.clickEditWithAVisualEditorButton();
         log.info("And was run");
     }
@@ -276,7 +288,7 @@ public class WordPressBlogPostStepDef {
             basePageObject.takeScreenshot();
             log.info("The '" + scenario.getName() + "' scenario is failed.");
         } else {
-            log.info("The scenario ran successfully.");
+            log.info("The '" + scenario.getName() + "'scenario ran successfully.");
         }
         driver.close();
         driver.quit();

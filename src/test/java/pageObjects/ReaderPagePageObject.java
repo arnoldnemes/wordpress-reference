@@ -25,7 +25,7 @@ public class ReaderPagePageObject extends BasePageObject {
      * @return true if the Welcome to Reader image is visible, false if not.
      */
     public boolean welcomeToReaderImageIsVisible() {
-        welcomeToReaderImage = waitForElement(welcomeToReaderImage);
+        waitForElement(welcomeToReaderImage);
         return welcomeToReaderImage.isDisplayed();
     }
 
@@ -38,7 +38,7 @@ public class ReaderPagePageObject extends BasePageObject {
     }
 
     public boolean searchBarIsVisible() {
-        searchBar = waitForElement(searchBar);
+        waitForElement(searchBar);
         return searchBar.isDisplayed();
     }
 }

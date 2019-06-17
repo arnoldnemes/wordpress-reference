@@ -23,21 +23,21 @@ public class HomePagePageObject extends BasePageObject {
      * Wait until the WordPress logo is visible.
      */
     public void waitForWordPressLogo() {
-        wordPressLogo = waitForElement(wordPressLogo);
+        waitForElement(wordPressLogo);
     }
 
     /**
      * Wait until the Log In button is visible.
      */
     public void waitForLogInButton() {
-        logInButton = waitForElement(logInButton);
+        waitForElement(logInButton);
     }
 
     /**
      * Wait until the Get Started button is visible.
      */
     public void waitForGetStartedButton() {
-        getStartedButton = waitForElement(getStartedButton);
+        waitForElement(getStartedButton);
     }
 
     /**

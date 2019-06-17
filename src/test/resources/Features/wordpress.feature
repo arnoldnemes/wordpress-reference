@@ -28,7 +28,8 @@ Feature: Blog Posts feature
   when the title text bar is cleared the text shouldn't be visible
     Given the user is logged in to WordPress page
     When the My Sites button is clicked
-    And the Blog Posts menu is clicked
+    And the Site dropdown is clicked
+    And the Posts button is clicked
     And the Add New Post button is clicked
     Then the Edit with a Visual editor button should be visible
 
@@ -41,23 +42,25 @@ Feature: Blog Posts feature
   Scenario: 5. The Add drop down button's elements should be visible
     Given the user is logged in to WordPress page
     When the My Sites button is clicked
-    And the Blog Posts menu is clicked
+    And the Site dropdown is clicked
+    And the Posts button is clicked
     And the Add New Post button is clicked
     And the Edit with a visual editor button is clicked
     Then the Add button should be visible
 
     When the Add dropdown is clicked
     Then the following span type buttons should be visible:
-      | Media              |
-      | Media from Google  |
-      | Free photo library |
-      | Contact form       |
-      | Payment button     |
+      | Media                 |
+      | Google Photos library |
+      | Free photo library    |
+      | Contact form          |
+      | Payment button        |
 
   Scenario Outline: 6. The popup should be visible after the Add dropdown elements are clicked
     Given the user is logged in to WordPress page
     When the My Sites button is clicked
-    And the Blog Posts menu is clicked
+    And the Site dropdown is clicked
+    And the Posts button is clicked
     And the Add New Post button is clicked
     Then the Add button should be visible
 
@@ -72,12 +75,12 @@ Feature: Blog Posts feature
 
     When the Media library dropdown is clicked
     Then the following button type buttons should be visible:
-      | WordPress library               |
-      | Photos from your Google library |
-      | Free photo library              |
+      | WordPress library     |
+      | Google Photos library |
+      | Free photo library    |
 
     Examples:
-      | button             |
-      | Media              |
-      | Media from Google  |
-      | Free photo library |
+      | button                |
+      | Media                 |
+      | Google Photos library |
+      | Free photo library    |
